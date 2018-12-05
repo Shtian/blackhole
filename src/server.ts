@@ -1,6 +1,6 @@
 import express from 'express'
 const app = express()
-import requestSink from './sinks/post/postSink'
+import requestSink from './sinks/request'
 import multer from 'multer'
 import Logger from './logger'
 const upload = multer({ dest: 'uploads/' })
