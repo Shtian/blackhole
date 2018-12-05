@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.post('/postForm', upload.any(), (req, res) => {
+app.post('/post', upload.any(), (req, res) => {
   const date = new Date()
   const timestamp = `[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}]`
   requestSink(req, timestamp, logger)
