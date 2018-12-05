@@ -10,6 +10,8 @@ const logger = new Logger(console.log)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const timestamp = (date: Date) => `[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}]`
+
 // Add CORS header middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
@@ -18,9 +20,7 @@ app.use((req, res, next) => {
 })
 
 app.post('/post', upload.any(), (req, res) => {
-  const date = new Date()
-  const timestamp = `[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}]`
-  requestSink(req, timestamp, logger)
+  requestSink(req, timestamp(new Date()), logger)
 
   res.json({ message: 'OK' })
 })
