@@ -18,11 +18,13 @@ const requestSink = (req: Request, timestamp: string, log: Logger): void => {
   })
 
   // Body
-  log.dump(chalk.green('🧳  Body:'))
-  if (req.body.form) {
-    log.dump('   ', JSON.parse(req.body.form))
-  } else {
-    log.dump('   ', req.body)
+  if (req.body) {
+    log.dump(chalk.green('🧳  Body:'))
+    if (req.body.form) {
+      log.dump('   ', JSON.parse(req.body.form))
+    } else {
+      log.dump('   ', req.body)
+    }
   }
 }
 
